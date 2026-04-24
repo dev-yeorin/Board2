@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+window -> preferences -> 검색: xml
+	-> xml(Wild Web Developer) -> 오른쪽 탭에서 
+	체크 download ML resource -> apply 버튼 클릭
+	
+	 namespace="com.green.menus.mapper.MenuMapper" : interface 위치
+
+
+ -->
+
+
+
+
+<mapper namespace="com.green.menus.mapper.MenuMapper">
+	
+	<select id="getMenuList"
+	        resultType="com.green.menus.dto.MenuDTO">
+			
+	SELECT     MENU_ID, MENU_NAME, MENU_SEQ
+	 FROM      MENUS
+	 ORDER BY  MENU_SEQ ASC
+	 	
+	</select>
+	
+	<insert id="insertMenu">
+	INSERT INTO MENUS 
+		VALUES (#{menu_id}, #{menu_name}, #{menu_seq}) 
+	
+	</insert>
+  
+</mapper>
