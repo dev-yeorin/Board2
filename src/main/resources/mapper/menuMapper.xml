@@ -17,6 +17,7 @@ window -> preferences -> 검색: xml
 
 <mapper namespace="com.green.menus.mapper.MenuMapper">
 	
+	<!-- 메뉴 목록조회 -->
 	<select id="getMenuList"
 	        resultType="com.green.menus.dto.MenuDTO">
 			
@@ -26,9 +27,36 @@ window -> preferences -> 검색: xml
 	 	
 	</select>
 	
+	<!-- 메뉴 한개 조회 -->
+	<select id="getMenu">
+	SELECT     MENU_ID, MENU_NAME, MENU_SEQ
+	 FROM      MENUS
+	 WHERE     MENU_ID = ${ menu_id }
+	 
+	</select>
+	
+	<!-- 메뉴 한개 추가 -->
 	<insert id="insertMenu">
-	INSERT INTO MENUS 
+	INSERT INTO MENUS ( MENU_ID, MENU_NAME, MENU_SEQ )
 		VALUES (#{menu_id}, #{menu_name}, #{menu_seq}) 
+	
+	</insert>
+	
+	
+	<!-- 메뉴 삭제 -->
+	<delete id="deleteMenu">
+	DELETE FROM MENUS 
+	WHERE = #{menu_id};
+	
+	</delete>
+	
+	<!-- 메뉴 수정 -->
+	<insert id="updateMenu">
+	
+	UPDATE MENUS
+	SET	   MENU_NAME = #{ menu_name },
+		   MENU_SEQ	 = #{ menu_seq }
+	WHERE  MENU_ID 	 = #{ menu_id }
 	
 	</insert>
   
